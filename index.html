@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>Projet Roadmap</title>
+</head>
+
+<body>
+  <h2 class="sr-only">Roadmap généraliste — Projet informatique de l'idée au produit, décomposée en 6 phases avec
+    actions et micro-tâches.</h2>
+
+  <div class="roadmap">
+    <div class="top-bar">
+      <div>
+        <div class="top-title"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--color-border-primary)"></i> Roadmap — Projet
+          informatique</div>
+        <div class="sub">De l'idée au produit · Template généraliste</div>
+      </div>
+      <button class="export-btn" onclick="copyMarkdown()"><i class="fa-regular fa-copy" aria-hidden="true"></i> Copier</button>
+    </div>
+
+    <input class="search" type="text" placeholder="Rechercher une action, étape, micro-tâche..."
+      oninput="filterSearch(this.value)">
+
+    <div class="filter-row" id="filters">
+      <button class="filter-btn active" onclick="setFilter('all', this)">Tout</button>
+      <button class="filter-btn" onclick="setFilter('p1', this)">Idéation</button>
+      <button class="filter-btn" onclick="setFilter('p2', this)">Cadrage</button>
+      <button class="filter-btn" onclick="setFilter('p3', this)">Conception</button>
+      <button class="filter-btn" onclick="setFilter('p4', this)">Développement</button>
+      <button class="filter-btn" onclick="setFilter('p5', this)">Lancement</button>
+      <button class="filter-btn" onclick="setFilter('p6', this)">Post-lancement</button>
+    </div>
+
+    <div class="stats" id="stats-bar">
+      <div class="stat">
+        <div class="stat-num" id="s-phases">6</div>
+        <div class="stat-label">Phases</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="s-etapes">24</div>
+        <div class="stat-label">Étapes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="s-actions">72</div>
+        <div class="stat-label">Actions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="s-done">0</div>
+        <div class="stat-label">Complétées</div>
+      </div>
+    </div>
+
+    <div id="roadmap-content">
+
+      <!-- PHASE 1 -->
+      <div class="phase" data-phase="p1">
+        <div class="phase-header" onclick="togglePhase(this)">
+          <span class="phase-badge" style="background:var(--color-background-info);color:var(--color-text-info)">Phase
+            1</span>
+          <span class="phase-title">Idéation &amp; Validation</span>
+          <span class="phase-meta">1–2 semaines</span>
+          <i class="fa-solid fa-chevron-down phase-chevron open" aria-hidden="true"></i>
+        </div>
+        <div class="phase-body open">
+          <div class="criteria"><i class="fa-solid fa-bullseye" style="margin-right:5px"></i> Objectif : transformer une idée brute en concept validé · <i class="fa-solid fa-circle-check" style="margin-right:5px"></i> Critère de sortie : le
+            problème est réel, la cible est identifiée, l'idée tient face à la critique</div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> 1.1 — Définition du problème <span
+                class="livrable">→ Fiche problème</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Formuler le problème en 1 phrase</span></div>
+              <div class="microtaches open">
+                <div class="mt"><input type="checkbox" id="mt1" onchange="countDone()"><label for="mt1">Écrire "Le
+                    problème de [cible] est de [situation actuelle] qui entraîne [conséquence]"</label></div>
+                <div class="mt"><input type="checkbox" id="mt2" onchange="countDone()"><label for="mt2">Tester la
+                    formulation sur 3 personnes de l'entourage</label></div>
+                <div class="mt"><input type="checkbox" id="mt3" onchange="countDone()"><label for="mt3">Valider que
+                    c'est un vrai problème et non une préférence personnelle</label></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size: 11px; color: var(--color-text-tertiary); transform: rotate(90deg);"
+                  aria-hidden="true"></i><span class="action-label">Identifier les utilisateurs cibles</span></div>
+              <div class="microtaches open">
+                <div class="mt"><input type="checkbox" id="mt4" onchange="countDone()"><label for="mt4">Décrire le
+                    profil démographique et comportemental</label></div>
+                <div class="mt"><input type="checkbox" id="mt5" onchange="countDone()"><label for="mt5">Estimer la
+                    taille du segment (petit, moyen, grand marché)</label></div>
+                <div class="mt"><input type="checkbox" id="mt6" onchange="countDone()"><label for="mt6">Lister où
+                    trouver ces utilisateurs (forums, réseaux, communautés)</label></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Analyser la concurrence existante</span></div>
+              <div class="microtaches open">
+                <div class="mt"><input type="checkbox" id="mt7" onchange="countDone()"><label for="mt7">Lister 5
+                    solutions existantes (directes et indirectes)</label></div>
+                <div class="mt"><input type="checkbox" id="mt8" onchange="countDone()"><label for="mt8">Identifier leurs
+                    forces, faiblesses, et leurs lacunes</label></div>
+                <div class="mt"><input type="checkbox" id="mt9" onchange="countDone()"><label for="mt9">Formuler votre
+                    avantage différenciant en 1 ligne</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-users" aria-hidden="true"></i> 1.2 — Validation terrain <span
+                class="livrable">→ 5+ interviews, synthèse</span></div>
+            <div class="dep"><i class="fa-solid fa-lock" style="font-size:11px" aria-hidden="true"></i> Critique — ne pas
+              coder avant cette étape</div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Conduire 5 à 10 interviews utilisateurs</span></div>
+              <div class="microtaches open">
+                <div class="mt"><input type="checkbox" id="mt10" onchange="countDone()"><label for="mt10">Préparer un
+                    guide d'entretien (5–8 questions ouvertes)</label></div>
+                <div class="mt"><input type="checkbox" id="mt11" onchange="countDone()"><label for="mt11">Recruter les
+                    participants (réseaux, posts, messages directs)</label></div>
+                <div class="mt"><input type="checkbox" id="mt12" onchange="countDone()"><label for="mt12">Mener les
+                    entretiens et noter verbatim les réponses</label></div>
+                <div class="mt"><input type="checkbox" id="mt13" onchange="countDone()"><label for="mt13">Synthétiser
+                    les patterns récurrents en thèmes</label></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Valider la volonté de payer</span></div>
+              <div class="microtaches open">
+                <div class="mt"><input type="checkbox" id="mt14" onchange="countDone()"><label for="mt14">Demander
+                    "Combien payeriez-vous pour résoudre ce problème ?"</label></div>
+                <div class="mt"><input type="checkbox" id="mt15" onchange="countDone()"><label for="mt15">Tester une
+                    landing page avec liste d'attente (optionnel)</label></div>
+                <div class="mt"><input type="checkbox" id="mt16" onchange="countDone()"><label for="mt16">Décider Go /
+                    No-Go sur la base des données collectées</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="phase" data-phase="p2">
+        <div class="phase-header" onclick="togglePhase(this)">
+          <span class="phase-badge"
+            style="background:var(--color-background-success);color:var(--color-text-success)">Phase 2</span>
+          <span class="phase-title">Cadrage &amp; Architecture</span>
+          <span class="phase-meta">1–3 semaines</span>
+          <i class="fa-solid fa-chevron-down phase-chevron" aria-hidden="true"></i>
+        </div>
+        <div class="phase-body">
+          <div class="criteria"><i class="fa-solid fa-bullseye" style="margin-right:5px"></i> Objectif : définir précisément quoi construire et comment · <i class="fa-solid fa-circle-check" style="margin-right:5px"></i> Critère de sortie :
+            specs rédigées, stack choisie, environnements configurés</div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-list-check" aria-hidden="true"></i> 2.1 — Définition du MVP <span
+                class="livrable">→ Document de specs</span></div>
+            <div class="dep"><span class="tag tag-lock"><i class="fa-solid fa-lock"></i> Bloquant</span> Tout le développement dépend de cette étape
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Lister toutes les fonctionnalités imaginées</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt17" onchange="countDone()"><label for="mt17">Brainstormer
+                    sans filtre toutes les features possibles</label></div>
+                <div class="mt"><input type="checkbox" id="mt18" onchange="countDone()"><label for="mt18">Classer en
+                    Must-have / Should-have / Nice-to-have (MoSCoW)</label></div>
+                <div class="mt"><input type="checkbox" id="mt19" onchange="countDone()"><label for="mt19">Garder max 3
+                    fonctionnalités core pour le MVP</label></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Rédiger les user stories</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt20" onchange="countDone()"><label for="mt20">Format "En
+                    tant que [rôle], je veux [action] pour [bénéfice]"</label></div>
+                <div class="mt"><input type="checkbox" id="mt21" onchange="countDone()"><label for="mt21">Définir les
+                    critères d'acceptation pour chaque story</label></div>
+                <div class="mt"><input type="checkbox" id="mt22" onchange="countDone()"><label for="mt22">Estimer la
+                    complexité de chaque story (points ou T-shirt sizing)</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> 2.2 — Choix du stack technique <span
+                class="livrable">→ ADR (Architecture Decision Record)</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Choisir le stack frontend / backend / base de données</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt23" onchange="countDone()"><label for="mt23">Lister les
+                    contraintes (compétences dispo, budget, scalabilité)</label></div>
+                <div class="mt"><input type="checkbox" id="mt24" onchange="countDone()"><label for="mt24">Comparer 2–3
+                    options sur des critères clés</label></div>
+                <div class="mt"><input type="checkbox" id="mt25" onchange="countDone()"><label for="mt25">Documenter la
+                    décision dans un ADR daté</label></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Concevoir le schéma de données</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt26" onchange="countDone()"><label for="mt26">Identifier les
+                    entités principales et leurs attributs</label></div>
+                <div class="mt"><input type="checkbox" id="mt27" onchange="countDone()"><label for="mt27">Dessiner le
+                    modèle relationnel ou objet (ERD)</label></div>
+                <div class="mt"><input type="checkbox" id="mt28" onchange="countDone()"><label for="mt28">Valider avec
+                    un pair ou un dev expérimenté</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-gears" aria-hidden="true"></i> 2.3 — Setup de l'environnement
+              <span class="livrable">→ Dépôt git + CI/CD de base</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Configurer le projet et les outils</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt29" onchange="countDone()"><label for="mt29">Créer le dépôt
+                    git avec .gitignore et README</label></div>
+                <div class="mt"><input type="checkbox" id="mt30" onchange="countDone()"><label for="mt30">Configurer les
+                    branches (main, develop, feature/*)</label></div>
+                <div class="mt"><input type="checkbox" id="mt31" onchange="countDone()"><label for="mt31">Mettre en
+                    place linter, formatter (ESLint, Prettier, etc.)</label></div>
+                <div class="mt"><input type="checkbox" id="mt32" onchange="countDone()"><label for="mt32">Configurer un
+                    pipeline CI/CD minimal (GitHub Actions ou équivalent)</label></div>
+                <div class="mt"><input type="checkbox" id="mt33" onchange="countDone()"><label for="mt33">Créer les
+                    environnements dev / staging / prod</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="phase" data-phase="p3">
+        <div class="phase-header" onclick="togglePhase(this)">
+          <span class="phase-badge"
+            style="background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-secondary)">Phase
+            3</span>
+          <span class="phase-title">Conception &amp; Design</span>
+          <span class="phase-meta">1–2 semaines</span>
+          <i class="fa-solid fa-chevron-down phase-chevron" aria-hidden="true"></i>
+        </div>
+        <div class="phase-body">
+          <div class="criteria"><i class="fa-solid fa-bullseye" style="margin-right:5px"></i> Objectif : avoir des maquettes validées avant d'écrire du code · <i class="fa-solid fa-circle-check" style="margin-right:5px"></i> Critère de sortie
+            : maquettes haute-fidélité approuvées par au moins 2 utilisateurs test</div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-table-columns" aria-hidden="true"></i> 3.1 — UX &amp; Wireframes <span
+                class="livrable">→ Wireframes validés</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Cartographier les parcours utilisateurs (user flows)</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt34" onchange="countDone()"><label for="mt34">Lister les
+                    parcours principaux (inscription, action core, sortie)</label></div>
+                <div class="mt"><input type="checkbox" id="mt35" onchange="countDone()"><label for="mt35">Dessiner les
+                    flows avec un outil (Figma, FigJam, papier)</label></div>
+                <div class="mt"><input type="checkbox" id="mt36" onchange="countDone()"><label for="mt36">Identifier les
+                    points de friction potentiels</label></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Créer les maquettes basse puis haute fidélité</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt37" onchange="countDone()"><label for="mt37">Esquisser les
+                    écrans principaux en wireframes (basse fidélité)</label></div>
+                <div class="mt"><input type="checkbox" id="mt38" onchange="countDone()"><label for="mt38">Raffiner en
+                    maquettes haute fidélité avec un design system</label></div>
+                <div class="mt"><input type="checkbox" id="mt39" onchange="countDone()"><label for="mt39">Créer un
+                    prototype cliquable pour les tests utilisateurs</label></div>
+                <div class="mt"><input type="checkbox" id="mt40" onchange="countDone()"><label for="mt40">Valider les
+                    maquettes avec 2 à 3 utilisateurs cibles</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-palette" aria-hidden="true"></i> 3.2 — Design system de base <span
+                class="livrable">→ Charte UI, composants</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Définir les fondations visuelles</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt41" onchange="countDone()"><label for="mt41">Choisir la
+                    palette de couleurs (primaire, secondaire, neutres, sémantiques)</label></div>
+                <div class="mt"><input type="checkbox" id="mt42" onchange="countDone()"><label for="mt42">Définir la
+                    typographie (font, tailles, hiérarchie)</label></div>
+                <div class="mt"><input type="checkbox" id="mt43" onchange="countDone()"><label for="mt43">Créer les
+                    composants réutilisables (bouton, input, card, modal)</label></div>
+                <div class="mt"><input type="checkbox" id="mt44" onchange="countDone()"><label for="mt44">Documenter les
+                    règles d'utilisation dans un fichier de référence</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 4 -->
+      <div class="phase" data-phase="p4">
+        <div class="phase-header" onclick="togglePhase(this)">
+          <span class="phase-badge"
+            style="background:var(--color-background-warning);color:var(--color-text-warning)">Phase 4</span>
+          <span class="phase-title">Développement &amp; Tests</span>
+          <span class="phase-meta">4–12 semaines</span>
+          <i class="fa-solid fa-chevron-down phase-chevron" aria-hidden="true"></i>
+        </div>
+        <div class="phase-body">
+          <div class="criteria"><i class="fa-solid fa-bullseye" style="margin-right:5px"></i> Objectif : livrer le MVP fonctionnel et testé · <i class="fa-solid fa-circle-check" style="margin-right:5px"></i> Critère de sortie : toutes les user
+            stories MVP passent les tests, app déployée en staging</div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-code" aria-hidden="true"></i> 4.1 — Setup dev &amp; organisation
+              <span class="livrable">→ Backlog priorisé, conventions</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Structurer le backlog et les sprints</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt45" onchange="countDone()"><label for="mt45">Importer les
+                    user stories dans un outil (Jira, Linear, Notion, GitHub Issues)</label></div>
+                <div class="mt"><input type="checkbox" id="mt46" onchange="countDone()"><label for="mt46">Prioriser le
+                    backlog avec la méthode RICE ou MoSCoW</label></div>
+                <div class="mt"><input type="checkbox" id="mt47" onchange="countDone()"><label for="mt47">Définir les
+                    sprints (1 ou 2 semaines) et planifier le premier</label></div>
+                <div class="mt"><input type="checkbox" id="mt48" onchange="countDone()"><label for="mt48">Écrire les
+                    conventions de code (nommage, style, structure de dossiers)</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-server" aria-hidden="true"></i> 4.2 — Développement backend <span
+                class="livrable">→ API fonctionnelle + tests</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Construire l'API et la couche données</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt49" onchange="countDone()"><label for="mt49">Implémenter
+                    les migrations de base de données</label></div>
+                <div class="mt"><input type="checkbox" id="mt50" onchange="countDone()"><label for="mt50">Développer les
+                    endpoints REST ou GraphQL du MVP</label></div>
+                <div class="mt"><input type="checkbox" id="mt51" onchange="countDone()"><label for="mt51">Mettre en
+                    place l'authentification (JWT, OAuth, sessions)</label></div>
+                <div class="mt"><input type="checkbox" id="mt52" onchange="countDone()"><label for="mt52">Écrire les
+                    tests unitaires et d'intégration (coverage &gt; 70%)</label></div>
+                <div class="mt"><input type="checkbox" id="mt53" onchange="countDone()"><label for="mt53">Documenter
+                    l'API (Swagger/OpenAPI ou README)</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-desktop" aria-hidden="true"></i> 4.3 — Développement
+              frontend <span class="livrable">→ UI intégrée et fonctionnelle</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Intégrer l'UI et connecter à l'API</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt54" onchange="countDone()"><label for="mt54">Intégrer les
+                    composants depuis le design system</label></div>
+                <div class="mt"><input type="checkbox" id="mt55" onchange="countDone()"><label for="mt55">Connecter
+                    chaque écran aux endpoints API</label></div>
+                <div class="mt"><input type="checkbox" id="mt56" onchange="countDone()"><label for="mt56">Gérer les
+                    états de chargement, erreurs, et cas limites</label></div>
+                <div class="mt"><input type="checkbox" id="mt57" onchange="countDone()"><label for="mt57">Tester la
+                    responsivité sur mobile, tablette, desktop</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> 4.4 — Qualité, sécurité &amp;
+              performance <span class="livrable">→ Rapport de tests</span></div>
+            <div class="dep"><span class="tag tag-buf"><i class="fa-solid fa-clock"></i> Buffer</span> Prévoir +30% de temps ici</div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Tests bout-en-bout et audit sécurité</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt58" onchange="countDone()"><label for="mt58">Écrire les
+                    tests E2E pour les parcours critiques (Playwright, Cypress)</label></div>
+                <div class="mt"><input type="checkbox" id="mt59" onchange="countDone()"><label for="mt59">Auditer les
+                    failles OWASP Top 10 (injections, CORS, XSS, auth)</label></div>
+                <div class="mt"><input type="checkbox" id="mt60" onchange="countDone()"><label for="mt60">Tester les
+                    performances (Lighthouse &gt; 80, temps de réponse &lt; 500ms)</label></div>
+                <div class="mt"><input type="checkbox" id="mt61" onchange="countDone()"><label for="mt61">Corriger les
+                    bugs et valider avec les utilisateurs test (bêta fermée)</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 5 -->
+      <div class="phase" data-phase="p5">
+        <div class="phase-header" onclick="togglePhase(this)">
+          <span class="phase-badge"
+            style="background:var(--color-background-danger);color:var(--color-text-danger)">Phase 5</span>
+          <span class="phase-title">Lancement</span>
+          <span class="phase-meta">1–2 semaines</span>
+          <i class="fa-solid fa-chevron-down phase-chevron" aria-hidden="true"></i>
+        </div>
+        <div class="phase-body">
+          <div class="criteria"><i class="fa-solid fa-bullseye" style="margin-right:5px"></i> Objectif : mise en production et acquisition des premiers utilisateurs · <i class="fa-solid fa-circle-check" style="margin-right:5px"></i> Critère de
+            sortie : app en prod, 100+ utilisateurs réels, métriques trackées</div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-rocket" aria-hidden="true"></i> 5.1 — Déploiement production <span
+                class="livrable">→ App live et stable</span></div>
+            <div class="dep"><span class="tag tag-lock"><i class="fa-solid fa-lock"></i> Bloquant</span> Vérifier le runbook de déploiement avant
+              go-live</div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Déployer et configurer l'infra de production</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt62" onchange="countDone()"><label for="mt62">Configurer le
+                    serveur / cloud (VPS, AWS, Vercel, Railway, etc.)</label></div>
+                <div class="mt"><input type="checkbox" id="mt63" onchange="countDone()"><label for="mt63">Configurer le
+                    nom de domaine et le certificat SSL</label></div>
+                <div class="mt"><input type="checkbox" id="mt64" onchange="countDone()"><label for="mt64">Mettre en
+                    place les sauvegardes automatiques de la base de données</label></div>
+                <div class="mt"><input type="checkbox" id="mt65" onchange="countDone()"><label for="mt65">Configurer le
+                    monitoring et les alertes (Sentry, Datadog, UptimeRobot)</label></div>
+                <div class="mt"><input type="checkbox" id="mt66" onchange="countDone()"><label for="mt66">Effectuer un
+                    dernier smoke test en production</label></div>
+              </div>
+            </div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Gérer les aspects légaux et conformité</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt67" onchange="countDone()"><label for="mt67">Rédiger et
+                    publier les CGU / CGV</label></div>
+                <div class="mt"><input type="checkbox" id="mt68" onchange="countDone()"><label for="mt68">Rédiger et
+                    publier la politique de confidentialité (RGPD)</label></div>
+                <div class="mt"><input type="checkbox" id="mt69" onchange="countDone()"><label for="mt69">Mettre en
+                    place le bandeau et le gestionnaire de cookies</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> 5.2 — Communication &amp;
+              acquisition <span class="livrable">→ 100+ users, page de lancement</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Lancer la communication</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt70" onchange="countDone()"><label for="mt70">Rédiger le
+                    pitch de lancement (problem, solution, appel à l'action)</label></div>
+                <div class="mt"><input type="checkbox" id="mt71" onchange="countDone()"><label for="mt71">Publier sur
+                    les canaux pertinents (Product Hunt, LinkedIn, X, Slack communities)</label></div>
+                <div class="mt"><input type="checkbox" id="mt72" onchange="countDone()"><label for="mt72">Contacter
+                    manuellement les 20 premières personnes de la liste d'attente</label></div>
+                <div class="mt"><input type="checkbox" id="mt73" onchange="countDone()"><label for="mt73">Mettre en
+                    place l'analytics (GA4, Posthog, Mixpanel) et définir les KPIs</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHASE 6 -->
+      <div class="phase" data-phase="p6">
+        <div class="phase-header" onclick="togglePhase(this)">
+          <span class="phase-badge"
+            style="background:var(--color-background-secondary);color:var(--color-text-tertiary);border:0.5px solid var(--color-border-secondary)">Phase
+            6</span>
+          <span class="phase-title">Post-lancement &amp; Croissance</span>
+          <span class="phase-meta">Continu</span>
+          <i class="fa-solid fa-chevron-down phase-chevron" aria-hidden="true"></i>
+        </div>
+        <div class="phase-body">
+          <div class="criteria"><i class="fa-solid fa-bullseye" style="margin-right:5px"></i> Objectif : stabiliser, itérer et croître · <i class="fa-solid fa-circle-check" style="margin-right:5px"></i> Critère de sortie : rétention &gt; 40% à
+            J+30, feuille de route v2 définie</div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-chart-line" aria-hidden="true"></i> 6.1 — Analyse &amp; feedback
+              <span class="livrable">→ Rapport hebdo + backlog mis à jour</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Instaurer une boucle de feedback continue</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt74" onchange="countDone()"><label for="mt74">Mettre en
+                    place un canal de feedback direct (Intercom, email, Discord)</label></div>
+                <div class="mt"><input type="checkbox" id="mt75" onchange="countDone()"><label for="mt75">Analyser les
+                    métriques chaque semaine (activation, rétention, churn)</label></div>
+                <div class="mt"><input type="checkbox" id="mt76" onchange="countDone()"><label for="mt76">Conduire 2
+                    entretiens utilisateurs par semaine pendant le 1er mois</label></div>
+                <div class="mt"><input type="checkbox" id="mt77" onchange="countDone()"><label for="mt77">Identifier le
+                    "feature gap" le plus critique et le prioriser</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> 6.2 — Itération &amp; V2 <span
+                class="livrable">→ Roadmap v2 priorisée</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Planifier les prochains cycles</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt78" onchange="countDone()"><label for="mt78">Faire une
+                    rétrospective formelle à 30 jours (ce qui a marché / raté)</label></div>
+                <div class="mt"><input type="checkbox" id="mt79" onchange="countDone()"><label for="mt79">Reprendre le
+                    backlog et intégrer les feedbacks utilisateurs</label></div>
+                <div class="mt"><input type="checkbox" id="mt80" onchange="countDone()"><label for="mt80">Définir les
+                    OKRs du trimestre suivant</label></div>
+                <div class="mt"><input type="checkbox" id="mt81" onchange="countDone()"><label for="mt81">Évaluer si une
+                    levée de fonds ou un modèle de revenus doit être activé</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="etape">
+            <div class="etape-title"><i class="fa-solid fa-gavel" aria-hidden="true"></i> 6.3 — Aspects admin, légaux &amp;
+              financiers <span class="livrable">→ Entité créée, fiscalité gérée</span></div>
+            <div class="action">
+              <div class="action-title" onclick="toggleAction(this)"><i class="fa-solid fa-chevron-right"
+                  style="font-size:11px;color:var(--color-text-tertiary)" aria-hidden="true"></i><span
+                  class="action-label">Structurer l'entité juridique et financière</span></div>
+              <div class="microtaches">
+                <div class="mt"><input type="checkbox" id="mt82" onchange="countDone()"><label for="mt82">Choisir la
+                    forme juridique adaptée (auto-entrepreneur, SASU, SAS, etc.)</label></div>
+                <div class="mt"><input type="checkbox" id="mt83" onchange="countDone()"><label for="mt83">Enregistrer
+                    l'entité et obtenir le SIRET ou équivalent</label></div>
+                <div class="mt"><input type="checkbox" id="mt84" onchange="countDone()"><label for="mt84">Ouvrir un
+                    compte bancaire professionnel</label></div>
+                <div class="mt"><input type="checkbox" id="mt85" onchange="countDone()"><label for="mt85">Mettre en
+                    place une comptabilité simple dès le premier euro</label></div>
+                <div class="mt"><input type="checkbox" id="mt86" onchange="countDone()"><label for="mt86">Protéger le
+                    nom et logo si nécessaire (dépôt marque INPI)</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RISQUES -->
+      <div class="warning-section">
+        <h3><i class="fa-solid fa-triangle-exclamation" style="font-size:14px;margin-right:6px" aria-hidden="true"></i>Risques
+          critiques à anticiper</h3>
+        <div class="warning-item"><strong>Construire sans valider</strong> → Mitigation : ne pas écrire de code avant 5+
+          interviews utilisateurs réels</div>
+        <div class="warning-item"><strong>Scope creep</strong> → Mitigation : geler les specs MVP et refuser toute
+          feature avant le lancement</div>
+        <div class="warning-item"><strong>Dette technique précoce</strong> → Mitigation : prévoir 20% du temps de dev
+          pour les tests et le refactoring</div>
+        <div class="warning-item"><strong>Sous-estimer le temps</strong> → Mitigation : multiplier toutes les
+          estimations par 1.5 pour les phases 4 et 5</div>
+        <div class="warning-item"><strong>Négliger le légal</strong> → Mitigation : intégrer CGU / RGPD dès le début,
+          pas après le lancement</div>
+      </div>
+
+      <!-- ACTIONS IMMÉDIATES -->
+      <div class="actions-now">
+        <h3><i class="fa-solid fa-robot icon-gpt"
+            style="display:inline-flex;margin-right:8px;vertical-align:middle"></i>Suggestions de l'Assistant</h3>
+        <div class="action-item"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Formuler le problème en 1 phrase
+          et le tester sur 3 personnes</div>
+        <div class="action-item"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Planifier 5 interviews
+          utilisateurs (les contacter aujourd'hui)</div>
+        <div class="action-item"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Lister les 5 concurrents existants
+          et noter leurs lacunes</div>
+        <div class="action-item"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>Créer le dépôt git et le premier
+          document de vision</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
